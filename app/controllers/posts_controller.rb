@@ -4,7 +4,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    post1 = Post.new
+      post1.name = "First"
+      post1.body = "Something interesting."
+    post2 =  Post.new
+      post2.name = "Second"
+      post2.body = "Something boring."
+    @posts = [post1,post2]
   end
 
   # GET /posts/1

@@ -1,10 +1,48 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+# Uncomment this after everyone's moved to Bundler 1.2.0 or later.
+# See https://devcenter.heroku.com/articles/ruby-versions
+ruby '2.0.0'
+
+gem 'rails', '4.0.1'
+
+# compatibility for rails 3 attr_accessible
+# (should be temporary solution)
+gem 'protected_attributes'
+
+# Bundle edge Rails instead:
+# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+
+# Web Server and Database
+gem 'thin', '1.4.1'
+#gem 'pg', '0.14.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+# JavaScript runtime support
+gem 'therubyracer'
+
+
+# Authorization and Authentication
+gem 'devise'
+gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
+
+# API Support
+gem 'geocoder', '1.1.3'
+gem 'ice_cube'
+gem 'twilio-ruby', '3.8.0'
+gem 'savon', '2.0.3'
+gem 'airbrake', '3.1.4'
+gem 'newrelic_rpm'
+
+gem 'sidekiq', '2.3.1'
+gem 'sinatra', '1.3.3', require: false
+gem 'slim', '1.3.0'
+
+# Statistics
+gem 'rack-mini-profiler'
+gem 'mixpanel'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -15,31 +53,48 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'jquery-rails', '2.1.4'
+gem 'jquery-ui-rails', '4.0.2'
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'haml', '3.1.7'
+gem 'rabl', '0.9.3'
+gem 'active_model_serializers'
+gem 'i18n-js', :github => 'fnando/i18n-js'
+#gem 'i18n-js', '2.1.2'        # Client-side I18n support.
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'carrierwave', '0.6.2'
+gem 'fog', '~>1.8'            # Support for S3
+gem 'carmen-rails', '~> 1.0.0', github: 'jim/carmen-rails' # State/Country lists
+gem 'roo', '1.10.1'           # Read-only support for .xls, .xlsx, .ods spreadsheet types
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'yaml_db', :git => 'https://github.com/lostapathy/yaml_db.git'
+gem 'seed-fu'
+gem 'symbolize', '~> 4.4.1'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'sanitize'
+gem 'sanitize-rails', :require => 'sanitize/rails'
+# TODO (smolnar) tinymce-rails and tinymce-rails-langs causes this error: http://stackoverflow.com/questions/17134769/rails-dont-know-how-to-build-task-assetsprecompileprimary
+# gem 'tinymce-rails', '3.5.6'
+# gem 'tinymce-rails-langs', '0.1'
+gem 'nested_form'
+gem 'simple_form'
+gem 'wicked', '0.2.0'
+gem 'attribute_normalizer', '1.1.0'
+gem 'chosen-rails'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+# Deploy with Capistrano
+
+gem 'capistrano', '2.14.2'
+gem 'capistrano-ext'
+gem 'cloudservers', git: 'https://github.com/karnath/ruby-cloudservers'  # rackspace
+gem 'foreman'
+
+gem 'whenever', require: false  # cron jobs
+
+gem 'rubyzip', '< 1.0.0'
+
+
+
+group :production do
+  gem 'unicorn'
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
